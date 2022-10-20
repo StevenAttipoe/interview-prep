@@ -1,4 +1,4 @@
-
+# O(2^N) time and O(2^N) space
 def subsets(nums):
     output = [[]]
     
@@ -24,7 +24,9 @@ def test_subsets_with_three_input():
     expected = [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
     assert actual == expected
 
-#python3 -m pytest subsets.py -v
+
+    #Algorithm:
+    #    Add the each number to each element to the output list [[]]
 
     #nums = [1]
     # output = [[], [1]]
@@ -34,3 +36,5 @@ def test_subsets_with_three_input():
 
     # nums = [1,2,3]
     # output = [[3], [1,3], [2,3], [1,2,3], [], [1], [2], [1,2]]
+
+    #Observation: As the len of the list increases by 1, the output doubles
