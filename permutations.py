@@ -1,35 +1,35 @@
 
+def getPermutations(nums):
+    permutations = []
 
-def getPermutations(array):
-    if len(array) == 0:
-        return []
-    
-    permutations = getPermutationsHelper(array)
-    print(permutations)
+    #base case
+    if len(nums) == 1:
+        return [nums[:]]
+
+    for i in range(len(nums)):
+        #Remove each number from nums
+        num = nums.pop(0)
+
+        #Recuse new nums array
+        perms = getPermutations(nums)
+        
+        
+        for perm in perms:
+            #Add popped number back to the permutation
+            perm.append(num)
+            
+        permutations.extend(perms)
+        nums.append(num)
 
     return permutations
-
-def getPermutationsHelper(array, output=[]):
-    output.append(array[:])
-    print("out:",output)
-
-    for i in range(0, len(array) - 1 ):
-        perm = array
-        swap(i, i + 1, perm)
-        output.append(perm[:])
-        print(output)
-
-    return output
-
-def swap(i, j, array):
-    temp  = array[i]
-    array[i] = array[j]
-    array[j] = temp
-    return array
-
-
+        
 def test_getPermutations():
-    actual = getPermutations([1,2,3])
-    expected = [[1, 2, 3],[1, 3, 2],[2, 1, 3],[2, 3, 1],[3, 1, 2],[3, 2, 1]]
-
-    assert actual == expected
+    perms = getPermutations([1,2,3])
+    assert (len(perms) == 6)
+    assert([1, 2, 3] in perms)
+    assert([1, 3, 2] in perms)
+    assert([2, 1, 3] in perms)
+    assert([2, 3, 1] in perms)
+    assert([3, 1, 2] in perms)
+    assert([3, 2, 1] in perms)
+    
