@@ -10,9 +10,9 @@ def nestedListWeightSum(nestedList) -> int:
     return dfs(nestedList, 1)
 
 
-result = depthSum([[1,1],2,[1,1]])
+result = nestedListWeightSum([[1,1],2,[1,1]])
 assert(result == 10)
 
 
-result = depthSum([1,[4,[6]]])
+result = nestedListWeightSum([1,[4,[6]]])
 assert(result == 27)
